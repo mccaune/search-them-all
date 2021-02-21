@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
-import Scroll from './Scroll'
-import './App.css'
+import Pokemon from './Pokemon';
+
+import './App.css';
 
 
 class App extends Component {
@@ -24,7 +27,7 @@ class App extends Component {
     // }
 
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then(response => {
             //console.log(response.json())
             return response.json();
@@ -40,7 +43,6 @@ class App extends Component {
     }
 
     render() {
-        const pokemonData = this.state.pokemonData;
         const filteredPokemons = this.state.pokemons.filter(pokemon => {
             return pokemon.name.includes(this.state.searchfield.toLowerCase());
         })
@@ -48,13 +50,20 @@ class App extends Component {
             return <h1>Loading</h1>
         } else {
             return (
-                <div className='tc'>
+                <Router>
+                    <div>
+                    <div className='tc sticky'>
                     <h1 className='f1'>Search them all</h1>
-                    <SearchBox searchChange = {this.onSearchChange} />
-                    <Scroll>
-                        <CardList pokemons={filteredPokemons} pokemonData = {pokemonData}/>
-                    </Scroll>
-                </div>
+                        <SearchBox searchChange = {this.onSearchChange} />
+                    </div>
+                    <div className="top">
+                            <Switch >
+                                <Route exact path="/" render={() =>  <CardList pokemons={filteredPokemons} />}/>
+                                <Route exact path="/pokemon/:id" component={Pokemon}/>
+                            </Switch>
+                    </div>
+                    </div>
+                </Router>
                 );
             }
     }    

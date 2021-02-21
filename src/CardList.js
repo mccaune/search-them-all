@@ -32,7 +32,7 @@ const CardList = ({ pokemons }) => {
 })
 
     return (
-        <div>
+        <div className = "tc">
             { cardComponent }
         </div>
     );
