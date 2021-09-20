@@ -27,7 +27,7 @@ class App extends Component {
     // }
 
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=200')
         .then(response => {
             //console.log(response.json())
             return response.json();

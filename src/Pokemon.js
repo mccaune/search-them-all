@@ -157,7 +157,8 @@ export default class Pokemon extends Component {
           
         </div>
                 
-        <img className="imagePoke" src={`https://pokeres.bastionbot.org/images/pokemon/${this.state.id}.png`}/>
+        {/* <img className="imagePoke" src={`https://pokeres.bastionbot.org/images/pokemon/${this.state.id}.png`}/> */}
+        <img className="imagePoke" src={`https://static.pokemonpets.com/images/monsters-images-300-300/${this.state.id}-${this.state.name}.webp`}/>
 
 
         <div className="infoPoke">
