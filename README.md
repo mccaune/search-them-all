@@ -15,6 +15,6 @@
 * displays pokemon list with gathered data
 * ability to search through the data
 
-[Search them all demo](search-them-all/demo/search-them-all.gif)
+[Search them all demo](demo/search-them-all.gif)
 
 
